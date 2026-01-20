@@ -4,7 +4,8 @@ import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image'; 
 import { motion, AnimatePresence, Variants } from 'framer-motion';
-import { Dumbbell, Trophy, ScrollText, User, Menu, X } from 'lucide-react';
+// Agregamos el icono LogIn para el portal
+import { Dumbbell, Trophy, ScrollText, User, Menu, X, LogIn } from 'lucide-react';
 
 // --- CONFIGURACIÓN ---
 interface MenuItem {
@@ -86,9 +87,6 @@ export default function NavBar() {
                 alt="Darofit Logo" 
                 width={120} 
                 height={40} 
-                // AQUÍ ESTÁ LA MAGIA:
-                // Si NO hay scroll (!scrolled), aplicamos "brightness-0 invert" que lo vuelve blanco puro.
-                // Si hay scroll, quitamos la clase y se ve original (oscuro).
                 className={`object-contain h-10 w-auto transition-all duration-500 ${
                     !scrolled ? "brightness-0 invert opacity-90" : "opacity-100"
                 }`}
@@ -106,14 +104,13 @@ export default function NavBar() {
                   whileHover="hover"
                   initial="initial"
                 >
-                  {/* Glow */}
                   <motion.div
                     className="absolute inset-0 z-0 pointer-events-none rounded-2xl"
                     variants={glowVariants}
                     style={{ background: item.gradient, opacity: 0 }}
                   />
 
-                  {/* Cara Frontal (Texto cambia de color) */}
+                  {/* Cara Frontal */}
                   <motion.a
                     href={item.href}
                     className={`flex items-center gap-2 px-4 py-2 relative z-10 bg-transparent transition-colors duration-500 rounded-xl ${
@@ -149,8 +146,24 @@ export default function NavBar() {
             ))}
           </ul>
 
-          {/* CTA + MOBILE TOGGLE */}
-          <div className="flex items-center gap-4">
+          {/* CTA + PORTAL + MOBILE TOGGLE */}
+          <div className="flex items-center gap-3">
+            
+            {/* NUEVO BOTÓN: Portal Clientes (Desktop) */}
+            <Link 
+              href="https://gymtek.pulsotek.cloud/login"
+              target="_blank"
+              className={`hidden sm:flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs font-bold uppercase tracking-wider border transition-all ${
+                scrolled 
+                  ? "border-gray-400 text-gray-800 hover:border-darofit-primary hover:text-darofit-primary" 
+                  : "border-white/30 text-white hover:bg-white hover:text-black"
+              }`}
+            >
+              <LogIn size={14} />
+              <span>Portal Clientes</span>
+            </Link>
+
+            {/* Botón Principal: Empezar */}
             <Link 
               href="#planes"
               className="hidden sm:block px-5 py-2.5 rounded-xl bg-darofit-primary text-white text-xs font-bold uppercase tracking-wider hover:bg-[#a02344] transition-all shadow-lg shadow-darofit-primary/20"
@@ -158,7 +171,7 @@ export default function NavBar() {
               Empezar
             </Link>
 
-            {/* Botón Hamburguesa (Cambia de color) */}
+            {/* Botón Hamburguesa (Móvil) */}
             <button 
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               className={`md:hidden p-2 rounded-lg transition-colors duration-500 ${
@@ -194,7 +207,25 @@ export default function NavBar() {
                   </Link>
                 </li>
               ))}
-              <li className="pt-2">
+              
+              {/* Separador */}
+              <li className="h-px bg-gray-800 my-2" />
+
+              {/* Botón Portal Clientes (Móvil) */}
+              <li>
+                <Link 
+                  href="https://gymtek.pulsotek.cloud/login"
+                  target="_blank"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="flex items-center justify-center gap-2 p-3 rounded-xl border border-gray-700 text-gray-300 hover:border-darofit-primary hover:text-white transition-all mb-2"
+                >
+                  <LogIn size={16} />
+                  <span className="font-medium text-sm">Portal Clientes</span>
+                </Link>
+              </li>
+
+              {/* Botón Empezar (Móvil) */}
+              <li>
                  <Link 
                   href="#planes"
                   onClick={() => setMobileMenuOpen(false)}

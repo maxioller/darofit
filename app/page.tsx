@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
+import Link from "next/link"; // Mantenemos Link o usamos 'a' simple
 import { motion } from "framer-motion";
 
 // Importamos todos los componentes
@@ -14,11 +14,22 @@ import FadeIn from "../components/FadeIn";
 import Marquee from "../components/Marquee"; 
 
 export default function Home() {
+
+  // --- FUNCIÓN PARA FORZAR EL SCROLL ---
+  // Esta función busca el ID y se mueve suavemente hacia él, ignorando la URL.
+  const handleScroll = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
+    e.preventDefault(); // Evita que Next.js intente cambiar la URL abruptamente
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <main className="min-h-screen bg-[#18191b] selection:bg-darofit-primary selection:text-white overflow-x-hidden">
       
       {/* --------------------------------------------------------- */}
-      {/* 1. SECCIÓN HERO (PORTADA) - ORDEN CORREGIDO EN MÓVIL      */}
+      {/* 1. SECCIÓN HERO (PORTADA)                                 */}
       {/* --------------------------------------------------------- */}
       <section className="snap-center relative min-h-screen flex items-end pb-0 md:items-center overflow-hidden font-sans pt-20 md:pt-0">
         
@@ -45,15 +56,13 @@ export default function Home() {
         </div>
 
         {/* CONTENIDO HERO */}
-        {/* Usamos 'items-end' en el grid para que en móvil la imagen quede pegada abajo si sobra espacio */}
         <div className="container mx-auto px-6 relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-12 items-center lg:items-center h-full min-h-screen lg:min-h-0">
           
-          {/* --- COLUMNA 1: TEXTO (Ahora order-1 en móvil también) --- */}
+          {/* --- COLUMNA 1: TEXTO --- */}
           <motion.div 
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
-            // CAMBIO AQUÍ: 'order-1' para que aparezca PRIMERO en celulares
             className="text-center lg:text-left pt-24 lg:pt-0 order-1 relative z-20 pb-10 lg:pb-0"
           >
             <motion.div
@@ -94,28 +103,31 @@ export default function Home() {
               transition={{ duration: 0.5, delay: 0.5 }}
               className="flex flex-col sm:flex-row gap-5 justify-center lg:justify-start items-center"
             >
-              <Link 
+              {/* BOTÓN 1: EMPEZAR CAMBIO (Con Fix de Scroll) */}
+              <a 
                 href="#planes"
-                className="px-8 py-4 bg-darofit-primary text-white font-bold rounded-full text-lg shadow-xl shadow-darofit-primary/20 hover:bg-[#a02344] transition-all transform hover:scale-105"
+                onClick={(e) => handleScroll(e, "planes")}
+                className="px-8 py-4 bg-darofit-primary text-white font-bold rounded-full text-lg shadow-xl shadow-darofit-primary/20 hover:bg-[#a02344] transition-all transform hover:scale-105 cursor-pointer"
               >
                 EMPEZAR CAMBIO
-              </Link>
+              </a>
               
-              <Link 
+              {/* BOTÓN 2: CONOCER MÉTODO (Con Fix de Scroll) */}
+              <a 
                 href="#metodo"
-                className="px-8 py-4 bg-white/5 border border-white/10 text-gray-300 font-medium rounded-full text-lg hover:bg-white/10 hover:border-white/30 hover:text-white transition-all backdrop-blur-sm"
+                onClick={(e) => handleScroll(e, "metodo")}
+                className="px-8 py-4 bg-white/5 border border-white/10 text-gray-300 font-medium rounded-full text-lg hover:bg-white/10 hover:border-white/30 hover:text-white transition-all backdrop-blur-sm cursor-pointer"
               >
                 Conocer método
-              </Link>
+              </a>
             </motion.div>
           </motion.div>
 
-          {/* --- COLUMNA 2: IMAGEN (Ahora order-2 en móvil) --- */}
+          {/* --- COLUMNA 2: IMAGEN --- */}
           <motion.div 
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1 }}
-            // CAMBIO AQUÍ: 'order-2' para que aparezca DEBAJO del texto en celulares
             className="relative h-[55vh] lg:h-[95vh] w-full flex items-end justify-center lg:justify-end order-2"
           >
             <div className="relative w-full h-full max-w-xl lg:max-w-3xl [mask-image:radial-gradient(ellipse_at_center,black_50%,transparent_100%)] [-webkit-mask-image:radial-gradient(ellipse_at_center,black_50%,transparent_100%)]">
@@ -130,7 +142,7 @@ export default function Home() {
           </motion.div>
         </div>
 
-        {/* --- GRADIENTES INFERIORES --- */}
+        {/* --- GRADIENTES --- */}
         <div className="absolute bottom-0 left-0 w-full h-64 bg-gradient-to-t from-[#18191b] via-[#18191b]/30 to-transparent z-20 pointer-events-none" />
         <div className="absolute bottom-0 left-0 w-full h-24 bg-gradient-to-t from-[#18191b] to-transparent z-20 pointer-events-none" />
 
