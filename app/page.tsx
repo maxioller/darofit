@@ -1,65 +1,175 @@
+"use client";
+
 import Image from "next/image";
+import Link from "next/link";
+import { motion } from "framer-motion";
+
+// Importamos todos los componentes
+import Method from "../components/Method";
+import Results from "../components/Results";
+import Plans from "../components/Plans";
+import About from "../components/About";
+import Footer from "../components/Footer";
+import FadeIn from "../components/FadeIn"; 
+import Marquee from "../components/Marquee"; 
 
 export default function Home() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
+    <main className="min-h-screen bg-[#18191b] selection:bg-darofit-primary selection:text-white overflow-x-hidden">
+      
+      {/* --------------------------------------------------------- */}
+      {/* 1. SECCIÓN HERO (PORTADA) - ORDEN CORREGIDO EN MÓVIL      */}
+      {/* --------------------------------------------------------- */}
+      <section className="snap-center relative min-h-screen flex items-end pb-0 md:items-center overflow-hidden font-sans pt-20 md:pt-0">
+        
+        {/* FONDO */}
+        <div className="absolute inset-0 z-0 bg-[#18191b] overflow-hidden">
+            <div className="absolute inset-0 z-0">
+              <Image
+                src="/gym-bg.jpg"
+                alt="Gym background texture"
+                fill
+                className="object-cover filter brightness-[0.4] contrast-90 opacity-70"
+                priority
+              />
+              <div className="absolute inset-0 bg-[#18191b]/80 mix-blend-multiply z-0" />
+            </div>
+
+            <div className="relative z-10 absolute inset-0 bg-[linear-gradient(to_right,#ffffff0a_1px,transparent_1px),linear-gradient(to_bottom,#ffffff0a_1px,transparent_1px)] bg-[size:24px_24px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] opacity-20" />
+
+            <motion.div 
+              animate={{ opacity: [0.2, 0.4, 0.2], scale: [1, 1.1, 1] }}
+              transition={{ duration: 8, repeat: Infinity }}
+              className="relative z-10 absolute -top-[10%] -left-[10%] w-[500px] h-[500px] bg-darofit-primary/20 rounded-full blur-[120px]"
             />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
         </div>
-      </main>
-    </div>
+
+        {/* CONTENIDO HERO */}
+        {/* Usamos 'items-end' en el grid para que en móvil la imagen quede pegada abajo si sobra espacio */}
+        <div className="container mx-auto px-6 relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-12 items-center lg:items-center h-full min-h-screen lg:min-h-0">
+          
+          {/* --- COLUMNA 1: TEXTO (Ahora order-1 en móvil también) --- */}
+          <motion.div 
+            initial={{ opacity: 0, x: -50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            // CAMBIO AQUÍ: 'order-1' para que aparezca PRIMERO en celulares
+            className="text-center lg:text-left pt-24 lg:pt-0 order-1 relative z-20 pb-10 lg:pb-0"
+          >
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+            >
+              <span className="inline-block py-1 px-3 rounded-full bg-darofit-primary/10 border border-darofit-primary/20 text-darofit-primary font-bold tracking-wider uppercase text-xs mb-6 backdrop-blur-sm">
+                Online Fitness Coach
+              </span>
+            </motion.div>
+            
+            <motion.h1 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.3 }}
+              className="text-5xl md:text-7xl font-extrabold text-white mb-6 tracking-tight leading-tight"
+            >
+              Resultados reales <br />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-darofit-primary to-pink-500 animate-gradient bg-[length:200%_auto]">
+                para personas reales.
+              </span>
+            </motion.h1>
+            
+            <motion.p 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.4 }}
+              className="text-lg md:text-xl text-gray-300 mb-10 max-w-xl mx-auto lg:mx-0 font-light leading-relaxed"
+            >
+              "La acción logra el progreso, no esperes a sentirte listo. 
+              Mañana será mejor."
+            </motion.p>
+
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.5 }}
+              className="flex flex-col sm:flex-row gap-5 justify-center lg:justify-start items-center"
+            >
+              <Link 
+                href="#planes"
+                className="px-8 py-4 bg-darofit-primary text-white font-bold rounded-full text-lg shadow-xl shadow-darofit-primary/20 hover:bg-[#a02344] transition-all transform hover:scale-105"
+              >
+                EMPEZAR CAMBIO
+              </Link>
+              
+              <Link 
+                href="#metodo"
+                className="px-8 py-4 bg-white/5 border border-white/10 text-gray-300 font-medium rounded-full text-lg hover:bg-white/10 hover:border-white/30 hover:text-white transition-all backdrop-blur-sm"
+              >
+                Conocer método
+              </Link>
+            </motion.div>
+          </motion.div>
+
+          {/* --- COLUMNA 2: IMAGEN (Ahora order-2 en móvil) --- */}
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1 }}
+            // CAMBIO AQUÍ: 'order-2' para que aparezca DEBAJO del texto en celulares
+            className="relative h-[55vh] lg:h-[95vh] w-full flex items-end justify-center lg:justify-end order-2"
+          >
+            <div className="relative w-full h-full max-w-xl lg:max-w-3xl [mask-image:radial-gradient(ellipse_at_center,black_50%,transparent_100%)] [-webkit-mask-image:radial-gradient(ellipse_at_center,black_50%,transparent_100%)]">
+               <Image 
+                src="/hero-bg.png" 
+                alt="Darofit Entrenador" 
+                fill 
+                className="object-contain object-bottom drop-shadow-2xl z-10"
+                priority 
+              />
+            </div>
+          </motion.div>
+        </div>
+
+        {/* --- GRADIENTES INFERIORES --- */}
+        <div className="absolute bottom-0 left-0 w-full h-64 bg-gradient-to-t from-[#18191b] via-[#18191b]/30 to-transparent z-20 pointer-events-none" />
+        <div className="absolute bottom-0 left-0 w-full h-24 bg-gradient-to-t from-[#18191b] to-transparent z-20 pointer-events-none" />
+
+      </section>
+
+      {/* 2. CINTA MARQUEE */}
+      <div className="snap-center py-12 bg-[#18191b] relative z-30">
+         <Marquee />
+      </div>
+
+      {/* 3. RESTO DE SECCIONES */}
+      <div className="snap-center bg-[#18191b]">
+        <FadeIn delay={0.2}>
+          <Method />
+        </FadeIn>
+      </div>
+
+      <div className="snap-center bg-[#18191b]">
+        <FadeIn>
+          <Results />
+        </FadeIn>
+      </div>
+
+      <div className="snap-center bg-[#18191b]">
+        <FadeIn>
+          <Plans />
+        </FadeIn>
+      </div>
+
+      <div className="snap-center bg-[#18191b]">
+        <FadeIn>
+          <About />
+        </FadeIn>
+      </div>
+      
+      <div className="snap-center bg-[#18191b]">
+        <Footer />
+      </div>
+
+    </main>
   );
 }
