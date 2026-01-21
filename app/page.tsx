@@ -153,6 +153,12 @@ export default function Home() {
          <Marquee />
       </div>
 
+      <div className="snap-center bg-[#18191b]">
+        <FadeIn>
+          <Results />
+        </FadeIn>
+      </div>
+
       {/* 3. RESTO DE SECCIONES */}
       <div className="snap-center bg-[#18191b]">
         <FadeIn delay={0.2}>
@@ -160,11 +166,7 @@ export default function Home() {
         </FadeIn>
       </div>
 
-      <div className="snap-center bg-[#18191b]">
-        <FadeIn>
-          <Results />
-        </FadeIn>
-      </div>
+      
 
       <div className="snap-center bg-[#18191b]">
         <FadeIn>
