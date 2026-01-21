@@ -4,7 +4,6 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 
 export default function About() {
-  // CSS del efecto Shimmer (Borde giratorio)
   const shimmerCss = `
     @property --angle {
       syntax: '<angle>';
@@ -17,7 +16,6 @@ export default function About() {
       }
     }
     .shimmer-card-bg {
-      /* Usamos el rosa de tu marca (#e11d48) */
       background: conic-gradient(from var(--angle), transparent 20%, #e11d48, transparent 50%);
       animation: shimmer-spin 3s linear infinite;
     }
@@ -26,52 +24,45 @@ export default function About() {
   return (
     <section id="sobre-mi" className="py-24 bg-[#18191b] relative overflow-hidden">
       
-      {/* Inyectamos estilos */}
       <style>{shimmerCss}</style>
 
-      {/* Luz ambiental sutil */}
       <div className="absolute top-1/2 left-0 w-[500px] h-[500px] bg-darofit-primary/5 rounded-full blur-[120px] pointer-events-none -translate-y-1/2" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           
           {/* LADO IZQUIERDO: FOTO */}
+          {/* CAMBIO: order-2 (baja en móvil) lg:order-1 (izquierda en PC) */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="relative flex justify-center"
+            className="relative flex justify-center order-2 lg:order-1"
           >
-            {/* Contenedor del efecto Shimmer */}
             <div className="relative w-full max-w-md aspect-[4/5] rounded-3xl overflow-hidden p-[2px] group shadow-2xl shadow-black/50">
-              
-              {/* CAPA 1: Borde Giratorio */}
               <div className="absolute inset-0 shimmer-card-bg opacity-100" />
-              
-              {/* CAPA 2: La Imagen */}
               <div className="relative h-full w-full bg-[#232426] rounded-[22px] overflow-hidden">
                   <Image 
                     src="/dario-about.jpeg" 
                     alt="Dario Oller - Entrenador" 
                     fill 
-                    // CAMBIO AQUÍ: Agregamos 'object-top' para que se alinee arriba y no corte la cabeza
                     className="object-cover object-top hover:scale-105 transition-transform duration-700"
                     priority
                   />
               </div>
             </div>
-
-            {/* Decoración extra detrás (Marco sutil) */}
             <div className="absolute -inset-4 border-2 border-darofit-primary/5 rounded-[2.5rem] -z-10 transform translate-x-4 translate-y-4" />
           </motion.div>
 
           {/* LADO DERECHO: BIO */}
+          {/* CAMBIO: order-1 (sube en móvil) lg:order-2 (derecha en PC) */}
           <motion.div
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
+            className="order-1 lg:order-2"
           >
             <span className="text-darofit-primary font-bold tracking-wider uppercase text-sm mb-2 block">
               Tu Entrenador

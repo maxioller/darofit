@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link"; // Mantenemos Link o usamos 'a' simple
+import Link from "next/link";
 import { motion } from "framer-motion";
 
 // Importamos todos los componentes
@@ -15,10 +15,8 @@ import Marquee from "../components/Marquee";
 
 export default function Home() {
 
-  // --- FUNCIÓN PARA FORZAR EL SCROLL ---
-  // Esta función busca el ID y se mueve suavemente hacia él, ignorando la URL.
   const handleScroll = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
-    e.preventDefault(); // Evita que Next.js intente cambiar la URL abruptamente
+    e.preventDefault(); 
     const element = document.getElementById(id);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
@@ -103,7 +101,6 @@ export default function Home() {
               transition={{ duration: 0.5, delay: 0.5 }}
               className="flex flex-col sm:flex-row gap-5 justify-center lg:justify-start items-center"
             >
-              {/* BOTÓN 1: EMPEZAR CAMBIO (Con Fix de Scroll) */}
               <a 
                 href="#planes"
                 onClick={(e) => handleScroll(e, "planes")}
@@ -112,7 +109,6 @@ export default function Home() {
                 EMPEZAR CAMBIO
               </a>
               
-              {/* BOTÓN 2: CONOCER MÉTODO (Con Fix de Scroll) */}
               <a 
                 href="#metodo"
                 onClick={(e) => handleScroll(e, "metodo")}
@@ -123,12 +119,12 @@ export default function Home() {
             </motion.div>
           </motion.div>
 
-          {/* --- COLUMNA 2: IMAGEN --- */}
+          {/* --- COLUMNA 2: IMAGEN (OCULTA EN MÓVIL) --- */}
           <motion.div 
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1 }}
-            className="relative h-[55vh] lg:h-[95vh] w-full flex items-end justify-center lg:justify-end order-2"
+            className="relative h-[55vh] lg:h-[95vh] w-full hidden lg:flex items-end justify-center lg:justify-end order-2"
           >
             <div className="relative w-full h-full max-w-xl lg:max-w-3xl [mask-image:radial-gradient(ellipse_at_center,black_50%,transparent_100%)] [-webkit-mask-image:radial-gradient(ellipse_at_center,black_50%,transparent_100%)]">
                <Image 
@@ -148,25 +144,26 @@ export default function Home() {
 
       </section>
 
-      {/* 2. CINTA MARQUEE */}
-      <div className="snap-center py-12 bg-[#18191b] relative z-30">
+      {/* 2. CINTA MARQUEE (OCULTA EN MÓVIL) */}
+      <div className="snap-center py-12 bg-[#18191b] relative z-30 hidden lg:block">
          <Marquee />
       </div>
 
+      {/* 3. RESTO DE SECCIONES (ORDEN CAMBIADO) */}
+      
+      {/* AHORA PRIMERO: RESULTADOS */}
       <div className="snap-center bg-[#18191b]">
-        <FadeIn>
+        <FadeIn delay={0.2}>
           <Results />
         </FadeIn>
       </div>
 
-      {/* 3. RESTO DE SECCIONES */}
+      {/* AHORA SEGUNDO: MÉTODO */}
       <div className="snap-center bg-[#18191b]">
-        <FadeIn delay={0.2}>
+        <FadeIn>
           <Method />
         </FadeIn>
       </div>
-
-      
 
       <div className="snap-center bg-[#18191b]">
         <FadeIn>
