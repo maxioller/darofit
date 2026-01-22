@@ -7,26 +7,35 @@ export default function Method() {
   const steps = [
     {
       id: "01",
-      title: "Entrenamiento Inteligente",
-      description: "No es entrenar más, es entrenar mejor. Rutinas adaptadas a tu biomecánica y objetivos reales.",
+      title: "Movilidad y Salud",
+      description: "La primer parte de movilidad, dándole salud a nuestro sistema locomotor para preparar el cuerpo.",
+      // Icono: Persona estirando / Actividad (Representando movilidad)
       icon: (
-        <svg xmlns="http://www.w3.org/2000/svg" className="w-8 h-8 text-white group-hover:text-darofit-primary transition-colors duration-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M6.5 6.5l11 11" /><path d="M21 21l-1-1" /><path d="M3 3l1 1" /><path d="M18 22l4-4" /><path d="M2 6l4-4" /><path d="M3 10l7.972-7.972a6 6 0 0 1 8.486 8.486L11.5 18.5Z" /></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" className="w-8 h-8 text-white group-hover:text-darofit-primary transition-colors duration-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M22 12h-4l-3 9L9 3l-3 9H2" />
+        </svg>
       )
     },
     {
       id: "02",
-      title: "Nutrición Flexible",
-      description: "Olvídate de las dietas de hambre. Aprende a comer lo que te gusta y a nutrir tu cuerpo.",
+      title: "Bloque de Fuerza",
+      description: "La parte central y más importante. Un bloque de fuerza donde hacemos hincapié en mejorar, fortalecer y desarrollar la musculatura del cuerpo.",
+      // Icono: Pesa (Representando Fuerza)
       icon: (
-        <svg xmlns="http://www.w3.org/2000/svg" className="w-8 h-8 text-white group-hover:text-darofit-primary transition-colors duration-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M12 20.94c1.5 0 2.75 1.06 4 1.06 3 0 6-8 6-12.22A4.91 4.91 0 0 0 17 5c-2.22 0-4 1.44-5 2-1-.56-2.78-2-5-2a4.9 4.9 0 0 0-5 4.78C2 14 5 22 8 22c1.25 0 2.5-1.06 4-1.06Z" /><path d="M10 2c1 .5 2 2 2 5" /></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" className="w-8 h-8 text-white group-hover:text-darofit-primary transition-colors duration-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M6.5 6.5l11 11" /><path d="M21 21l-1-1" /><path d="M3 3l1 1" /><path d="M18 22l4-4" /><path d="M2 6l4-4" /><path d="M3 10l7.972-7.972a6 6 0 0 1 8.486 8.486L11.5 18.5Z" />
+        </svg>
       )
     },
     {
       id: "03",
-      title: "Constancia y Hábitos",
-      description: "La motivación te inicia, el hábito te mantiene. Construimos un estilo de vida sostenible.",
+      title: "Cardio + Fuerza",
+      description: "El tercer bloque combina cardio y fuerza, ayudándonos a perder tejido adiposo más rápido que cualquier otro método.",
+      // Icono: Fuego (Representando quema de grasa / intensidad)
       icon: (
-        <svg xmlns="http://www.w3.org/2000/svg" className="w-8 h-8 text-white group-hover:text-darofit-primary transition-colors duration-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96.44 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 1 1.32-4.24 2.5 2.5 0 0 1 1.98-3A2.5 2.5 0 0 1 9.5 2Z" /><path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96.44 2.5 2.5 0 0 0 2.96-3.08 3 3 0 0 0 .34-5.58 2.5 2.5 0 0 0-1.32-4.24 2.5 2.5 0 0 0-1.98-3A2.5 2.5 0 0 0 14.5 2Z" /></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" className="w-8 h-8 text-white group-hover:text-darofit-primary transition-colors duration-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+           <path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.011-.2-6 1.6 2.5 5.5 5.5 5.5 10a5.5 5.5 0 1 1-11 0c0-2.316 2.15-4.5 4.204-6.496.066.97.22 1.884.22 1.884z" />
+        </svg>
       )
     }
   ];
@@ -45,11 +54,23 @@ export default function Method() {
             viewport={{ once: true }}
             className="text-4xl md:text-5xl font-bold text-white mb-6"
           >
-            No es suerte, es <span className="text-darofit-primary">estrategia</span>.
+            Recomposición Corporal <span className="text-darofit-primary">Consciente</span>
           </motion.h2>
-          <p className="text-xl text-gray-400 max-w-2xl mx-auto">
-            La recomposición corporal no ocurre por casualidad. Mi sistema se basa en tres pilares fundamentales.
-          </p>
+          
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2 }}
+            className="max-w-3xl mx-auto space-y-4"
+          >
+             <p className="text-xl text-white font-medium">
+               El <strong className="text-darofit-primary">Método R2C</strong> es un entrenamiento inteligente.
+             </p>
+             <p className="text-gray-400 text-lg">
+               No es magia, es la ubicación de cada bloque en el momento justo para maximizar resultados.
+             </p>
+          </motion.div>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
@@ -62,7 +83,7 @@ export default function Method() {
               transition={{ delay: index * 0.2 }}
               // EFECTO DE LEVITACIÓN AL HACER HOVER
               whileHover={{ y: -8, scale: 1.02 }}
-              className="relative group rounded-3xl bg-[#232426] p-8 transition-all duration-300"
+              className="relative group rounded-3xl bg-[#232426] p-8 transition-all duration-300 flex flex-col h-full"
             >
               {/* --- EFECTOS PREMIUM DE FONDO --- */}
               
@@ -73,14 +94,14 @@ export default function Method() {
               <div className="absolute inset-0 rounded-3xl border-2 border-transparent group-hover:border-darofit-primary/50 transition-colors duration-300 z-20 pointer-events-none" />
 
               {/* --- CONTENIDO --- */}
-              <div className="relative z-10">
+              <div className="relative z-10 flex-1 flex flex-col">
                 
                 {/* Número grande de fondo */}
                 <span className="absolute -right-4 -top-4 text-9xl font-bold text-gray-800/20 group-hover:text-darofit-primary/10 transition-colors pointer-events-none select-none">
                   {step.id}
                 </span>
                 
-                {/* Contenedor del Icono (Se ilumina por dentro al hacer hover) */}
+                {/* Contenedor del Icono */}
                 <div className="mb-6 w-16 h-16 rounded-2xl flex items-center justify-center 
                               bg-[#18191b] border border-gray-700 shadow-lg
                               group-hover:bg-darofit-primary/10 group-hover:border-darofit-primary/50 group-hover:shadow-darofit-primary/20
@@ -88,7 +109,9 @@ export default function Method() {
                   {step.icon}
                 </div>
                 
-                <h3 className="text-2xl font-bold text-white mb-4 group-hover:text-darofit-primary transition-colors duration-300">{step.title}</h3>
+                <h3 className="text-2xl font-bold text-white mb-4 group-hover:text-darofit-primary transition-colors duration-300">
+                  {step.title}
+                </h3>
                 <p className="text-gray-400 leading-relaxed group-hover:text-gray-300 transition-colors duration-300">
                   {step.description}
                 </p>

@@ -53,14 +53,14 @@ export default function Results() {
             
             <div className="space-y-6 text-gray-400 text-lg leading-relaxed">
               <p>
-                <strong className="text-white">Brenda</strong> llegó a mí con 100kg y una relación complicada con su cuerpo. Estaba frustrada por intentar dietas extremas que nunca funcionaban a largo plazo.
+                <strong className="text-white">Brenda</strong> comenzó mis asesorías con <strong className="text-white">110kg</strong>, una mala relación con su alimentación y una vida de hábitos poco sostenibles.
               </p>
               <p>
-                Durante <strong className="text-white">1 año de trabajo</strong>, no solo logramos una recomposición corporal completa, sino algo más importante: una relación sana con la comida.
+                Al cabo de <strong className="text-white">1 año de trabajo en conjunto</strong>, logramos generar una recomposición corporal completa: más masa muscular, menos grasa y una relación más sana con su cuerpo.
               </p>
               
-              <blockquote className="border-l-4 border-darofit-primary pl-6 py-2 italic text-gray-500 my-8">
-                "No fue suerte. No fue genética. Fue un plan claro, avanzar permitiendo ser humanos."
+              <blockquote className="border-l-4 border-darofit-primary pl-6 py-2 italic text-gray-500 my-8 text-xl">
+                "No fue suerte, no fue genética, fue un plan claro y objetivo."
               </blockquote>
             </div>
           </motion.div>

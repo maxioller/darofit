@@ -5,7 +5,6 @@ import { useRef, useState, MouseEvent } from 'react';
 
 export default function Plans() {
   return (
-    // CAMBIO: Fondo #18191b
     <section id="planes" className="py-24 bg-[#18191b] relative overflow-hidden">
       
       {/* Luz ambiental derecha */}
@@ -25,7 +24,6 @@ export default function Plans() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
           
           {/* --- PLAN BASIC --- */}
-          {/* CAMBIO: bg-[#232426] */}
           <div className="bg-[#232426] rounded-3xl p-8 border border-gray-800 hover:border-gray-600 transition-all relative group overflow-hidden flex flex-col">
             
             <SpotlightOverlay color="rgba(255,255,255,0.05)" />
@@ -33,28 +31,30 @@ export default function Plans() {
             <div className="relative z-10 flex flex-col h-full">
               <div className="mb-6">
                 <h3 className="text-2xl font-bold text-white">Plan Basic</h3>
-                <p className="text-gray-400 mt-2 text-sm h-10">
-                  Ideal si ya tienes experiencia y solo necesitas orden y estrategia.
+                {/* Descripción superior */}
+                <p className="text-gray-400 mt-2 text-sm leading-relaxed">
+                  Ideal si tenés experiencia y solo querés darle un orden inteligente a tu entrenamiento.
                 </p>
               </div>
+              
+              {/* PRECIO ACTUALIZADO */}
               <div className="text-3xl font-bold text-white mb-8">
-                Consultar <span className="text-sm font-normal text-gray-500">/mes</span>
+                $25.000,00 <span className="text-sm font-normal text-gray-500">/mes</span>
               </div>
               
+              {/* LISTA DE PUNTOS */}
               <ul className="space-y-4 mb-8 flex-1">
-                <li className="flex items-center text-gray-400">
-                  <span className="w-1.5 h-1.5 bg-gray-600 rounded-full mr-3"></span>
-                  Plan de entrenamiento personalizado
-                </li>
-                <li className="flex items-center text-gray-400">
-                  <span className="w-1.5 h-1.5 bg-gray-600 rounded-full mr-3"></span>
-                  Guía de alimentos
-                </li>
-                <li className="flex items-center text-gray-400">
-                  <span className="w-1.5 h-1.5 bg-gray-600 rounded-full mr-3"></span>
-                  Recetarios
-                </li>
+                <ListItem text="Plan de entrenamiento personalizado" />
+                <ListItem text="Archivos informativos" />
+                <ListItem text="Guía de alimentos ricos en proteína y bajos en caloría" />
+                <ListItem text="Recetario para aumentar masa muscular" />
+                <ListItem text="Recetario para perder tejido adiposo" />
               </ul>
+
+              {/* Frase de cierre (Callout) */}
+              <div className="mb-6 p-3 bg-white/5 rounded-xl border border-white/10 text-xs text-gray-300 italic text-center">
+                "Perfecto para empezar a ordenar tu proceso y avanzar con una estrategia sólida."
+              </div>
 
               <Link href="https://wa.me/" target="_blank" className="block w-full text-center py-4 rounded-xl border border-gray-600 text-white font-bold hover:bg-white hover:text-black transition-colors text-sm tracking-wider uppercase">
                 QUIERO EL PLAN BASIC
@@ -63,7 +63,6 @@ export default function Plans() {
           </div>
 
           {/* --- PLAN PREMIUM --- */}
-          {/* CAMBIO: bg-[#232426] y borde de marca */}
           <div className="bg-[#232426] rounded-3xl p-8 border-2 border-darofit-primary relative group overflow-visible transform md:-translate-y-4 shadow-2xl shadow-darofit-primary/10 flex flex-col">
             
             <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-darofit-primary text-white px-4 py-1 rounded-full text-xs font-bold tracking-wider uppercase z-30 shadow-lg">
@@ -77,31 +76,26 @@ export default function Plans() {
             <div className="relative z-10 flex flex-col h-full">
               <div className="mb-6">
                 <h3 className="text-2xl font-bold text-white">Plan Premium</h3>
-                <p className="text-gray-400 mt-2 text-sm h-10">
-                  Acompañamiento real 1 a 1. Vos entrenás, yo me encargo del resto.
+                {/* Descripción superior (Frase potente) */}
+                <p className="text-gray-400 mt-2 text-sm leading-relaxed">
+                  Este plan es un trabajo en equipo. <strong className="text-white">Vos entrenás. Yo me encargo del resto.</strong>
                 </p>
               </div>
+              
+              {/* PRECIO ACTUALIZADO */}
               <div className="text-3xl font-bold text-white mb-8">
-                Consultar <span className="text-sm font-normal text-gray-500">/mes</span>
+                $ 40.000,00 <span className="text-sm font-normal text-gray-500">/mes</span>
               </div>
               
+              {/* LISTA DE PUNTOS */}
               <ul className="space-y-4 mb-8 flex-1">
-                <li className="flex items-center text-white font-medium">
-                  <CheckIcon />
-                  <span className="ml-3">Todo lo del Plan Basic</span>
-                </li>
-                <li className="flex items-center text-white">
-                  <CheckIcon />
-                  <span className="ml-3">Seguimiento 1 a 1 por WhatsApp</span>
-                </li>
-                <li className="flex items-center text-white">
-                  <CheckIcon />
-                  <span className="ml-3">Videollamadas de control</span>
-                </li>
-                <li className="flex items-center text-white">
-                  <CheckIcon />
-                  <span className="ml-3">Análisis técnico de ejercicios</span>
-                </li>
+                <ListItem text="Plan de entrenamiento personalizado" highlight />
+                <ListItem text="Videollamadas para control y evacuar dudas" highlight />
+                <ListItem text="Contacto diario vía WhatsApp" highlight />
+                <ListItem text="Análisis necesario de técnica de ejercicios" highlight />
+                <ListItem text="Guía de alimentos ricos en proteína y bajos en caloría" />
+                <ListItem text="Recetario para aumentar masa muscular" />
+                <ListItem text="Recetario para perder grasa corporal" />
               </ul>
 
               <Link href="https://wa.me/" target="_blank" className="block w-full text-center py-4 rounded-xl bg-darofit-primary text-white font-bold hover:bg-[#a02344] transition-colors shadow-lg shadow-darofit-primary/20 text-sm tracking-wider uppercase">
@@ -113,6 +107,16 @@ export default function Plans() {
         </div>
       </div>
     </section>
+  );
+}
+
+// Componente auxiliar para los items de la lista
+function ListItem({ text, highlight = false }: { text: string, highlight?: boolean }) {
+  return (
+    <li className={`flex items-start ${highlight ? 'text-white font-medium' : 'text-gray-400'}`}>
+      <span className={`mt-1.5 w-1.5 h-1.5 rounded-full mr-3 flex-shrink-0 ${highlight ? 'bg-darofit-primary' : 'bg-gray-600'}`}></span>
+      <span className="text-sm">{text}</span>
+    </li>
   );
 }
 
@@ -144,13 +148,5 @@ function SpotlightOverlay({ color }: { color: string }) {
         }}
       />
     </div>
-  );
-}
-
-function CheckIcon() {
-  return (
-    <svg className="w-5 h-5 text-darofit-primary flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-    </svg>
   );
 }
